@@ -1,9 +1,11 @@
 <template>
   <article>
     <div class="hover-reveal">
-      <router-link :to="link">
-        <h1>{{ name }}</h1></router-link
-      >
+      <div class="artist-info">
+        <router-link :to="link">
+          <h1>{{ name }}</h1></router-link
+        >
+      </div>
     </div>
     <router-link :to="link"
       ><img :src="require('@/assets/' + image)"
@@ -23,10 +25,14 @@ export default {
 </script>
 
 <style>
-
 article {
   position: relative;
   background: blue;
+}
+
+.artist-info {
+  position: absolute;
+  bottom: 2rem;
 }
 
 .hover-reveal * {
@@ -41,6 +47,7 @@ article {
   left: 0;
   right: 0;
   bottom: 0;
+  padding: 2rem;
 
   opacity: 0;
   transition: opacity 250ms;
@@ -49,5 +56,4 @@ article {
 .hover-reveal:hover {
   opacity: 1;
 }
-
 </style>
