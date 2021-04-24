@@ -1,6 +1,8 @@
 <template>
   <nav class="nav-bar">
-    <router-link to="/"><img class="website-logo" src="../assets/logo.png" /></router-link>
+    <router-link to="/"
+      ><img class="website-logo" src="../assets/logo.png"
+    /></router-link>
     <div><router-link class="animated-link" to="/">Artists</router-link></div>
   </nav>
 </template>
@@ -8,10 +10,10 @@
 <script>
 export default {
   name: "navigation-bar",
-  data(){
+  data() {
     return {
-      artist: undefined
-    }
+      artist: undefined,
+    };
   },
 };
 </script>
@@ -23,7 +25,7 @@ export default {
   justify-content: space-between;
 }
 
-.website-logo{
+.website-logo {
   height: 5rem;
 }
 </style>

@@ -29,8 +29,14 @@
 
       <section>
         <h2>Follow</h2>
-        <p class="social-media-link" v-for="socialMedia in artist.socialMedia" :key="socialMedia.network">
-          <a class="animated-link" :href="socialMedia.link">{{ socialMedia.network }}</a>
+        <p
+          class="social-media-link"
+          v-for="socialMedia in artist.socialMedia"
+          :key="socialMedia.network"
+        >
+          <a class="animated-link" :href="socialMedia.link">{{
+            socialMedia.network
+          }}</a>
         </p>
       </section>
 
@@ -72,12 +78,12 @@ main {
 
 @media screen and (max-width: 400px) {
   main {
-  grid-template-columns: 1fr;
-  gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
-.social-media-link{
+.social-media-link {
   width: fit-content;
 }
 </style>
