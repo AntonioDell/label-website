@@ -22,17 +22,21 @@
     <aside>
       <section>
         <h2>Info</h2>
-        <p>{{ artist.travelInfo }}</p>
+        <p>Performance: {{ artist.performanceType }}</p>
+        <p>Travel: {{ artist.travelInfo }}</p>
+        <p>Agent: {{ artist.agentMailAddress }}</p>
       </section>
 
       <section>
         <h2>Follow</h2>
-        <p>{{ artist.travelInfo }}</p>
+        <p class="social-media-link" v-for="socialMedia in artist.socialMedia" :key="socialMedia.network">
+          <a class="animated-link" :href="socialMedia.link">{{ socialMedia.network }}</a>
+        </p>
       </section>
 
       <section>
         <h2>Listen</h2>
-        <p>{{ artist.travelInfo }}</p>
+        <soundcloud-widget :soundcloudEmbed="artist.soundcloudEmbed" />
       </section>
     </aside>
   </main>
@@ -40,8 +44,10 @@
 
 <script>
 import { mockArtists } from "../components/artist";
+import SoundcloudWidget from "../components/SoundcloudWidget";
 export default {
   name: "artist-details",
+  components: { SoundcloudWidget },
   props: {
     artistId: String,
   },
@@ -57,9 +63,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 main {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.social-media-link{
+  width: fit-content;
 }
 </style>

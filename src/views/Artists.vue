@@ -1,6 +1,12 @@
 <template>
   <main>
-    <artist-thumbnail v-for="artist in artistData" :key="artist.name" :name="artist.name" :image="artist.image" :link="artist.link"/>
+    <artist-thumbnail
+      v-for="artist in artistData"
+      :key="artist.name"
+      :name="artist.name"
+      :image="artist.image"
+      :link="artist.link"
+    />
   </main>
 </template>
 
@@ -20,7 +26,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 main {
   display: grid;
   gap: 2rem;

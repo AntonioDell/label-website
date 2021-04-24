@@ -7,8 +7,8 @@
         >
       </div>
     </div>
-    <router-link :to="link"
-      ><img :src="require('@/assets/' + image)"
+    <router-link class="thumbnail-container" :to="link"
+      ><img class="thumbnail-image" :src="require('@/assets/' + image)"
     /></router-link>
   </article>
 </template>
@@ -27,7 +27,6 @@ export default {
 <style>
 article {
   position: relative;
-  background: blue;
 }
 
 .artist-info {
@@ -55,5 +54,14 @@ article {
 
 .hover-reveal:hover {
   opacity: 1;
+}
+
+.thumbnail-image {
+  width: 250px;
+}
+.thumbnail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
