@@ -41,7 +41,6 @@ export default {
   margin: auto;
 }
 
-
 .animated-link {
   position: relative;
   display: block;
@@ -63,7 +62,7 @@ export default {
   transform-origin: right;
 }
 .animated-link:hover {
-  color: rgba(0,0,0,.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .animated-link:hover::after {
   transform: scaleX(1);
@@ -72,6 +71,12 @@ export default {
 
 .content > * {
   padding: 1rem 4.5rem;
+}
+
+@media screen and (max-width: 400px) {
+  .content > * {
+    padding: 0.5rem 1.5rem;
+  }
 }
 
 .fade-enter-active,

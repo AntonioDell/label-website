@@ -29,8 +29,21 @@ export default {
 <style scoped>
 main {
   display: grid;
-  gap: 2rem;
+  gap: 3rem;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: repeat(auto-fill);
+}
+
+@media screen and (max-width: 992px) {
+  main {
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 400px) {
+  main {
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
 }
 </style>

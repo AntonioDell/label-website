@@ -70,6 +70,13 @@ main {
   gap: 2rem;
 }
 
+@media screen and (max-width: 400px) {
+  main {
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  }
+}
+
 .social-media-link{
   width: fit-content;
 }

@@ -57,7 +57,7 @@ article {
 }
 
 .thumbnail-image {
-  width: 250px;
+  width: 300px;
 }
 .thumbnail-container {
   display: flex;
