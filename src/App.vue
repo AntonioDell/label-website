@@ -2,7 +2,7 @@
   <div class="content">
     <navigation-bar />
 
-    <router-view v-slot="{ Component }">
+    <router-view class="router-view" v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" />
       </transition>
@@ -19,7 +19,8 @@ export default {
   components: { NavigationBar, CustomFooter },
 };
 </script>
-<style CustomFooter>
+
+<style>
 @font-face {
   font-family: "Ignazio";
   src: url(./assets/fonts/IgnazioText-Regular.woff);
@@ -30,8 +31,11 @@ export default {
   src: url(./assets/fonts/ApfelGrotezk-Regular.woff);
 }
 
+.router-view {
+  flex: 1;
+}
+
 .content {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,6 +43,7 @@ export default {
   font-size: 1.25rem;
   max-width: 1200px;
   margin: auto;
+  height: 100%;
 }
 
 .animated-link {
@@ -69,21 +74,9 @@ export default {
   transform-origin: left;
 }
 
-.content > * {
-  padding: 1rem 4.5rem;
-}
-
-@media screen and (max-width: 400px) {
-  .content > * {
-    padding: 0.5rem 1.5rem;
-  }
-}
-
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: 0.3s;
-  transition-property: opacity;
-  transition-timing-function: ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter-from,

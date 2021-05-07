@@ -1,3 +1,5 @@
+import { ref, onMounted } from "vue";
+
 export class Artist {
   /**@type {string} */
   name;
@@ -14,9 +16,9 @@ export class Artist {
   /**@type {string} */
   agentMailAddress;
   /**@type {SocialMedia[]} */
-  socialMedia;
+  socialMedia = [];
   /**@type {SoundcloudEmbed} */
-  soundcloudEmbed;
+  soundcloudEmbed = new SoundcloudEmbed();
 }
 
 export class SocialMedia {
@@ -33,6 +35,21 @@ export class SoundcloudEmbed {
   creatorLink;
   creator;
 }
+
+export function useArtists() {
+  const artists = ref([]);
+  const getArtists = async () => {
+    artists.value = mockArtists;
+  };
+
+  onMounted(getArtists);
+
+  return { artists };
+}
+
+export const fetchArtists = async () => {
+  return mockArtists;
+};
 
 const mockSocialMedia = [
   { network: "Facebook", link: "https://facebook.de" },

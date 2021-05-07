@@ -31,7 +31,7 @@
 export default {
   name: "soundcloud-widget",
   props: {
-    /** @type {import("./artist").SoundcloudEmbed} */
+    /** @type {import("../repository/artist").SoundcloudEmbed} */
     soundcloudEmbed: Object,
   },
 };

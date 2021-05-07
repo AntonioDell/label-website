@@ -26,5 +26,6 @@ footer {
   background-color: rgb(238, 238, 238);
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: 0 2rem;
 }
 </style>

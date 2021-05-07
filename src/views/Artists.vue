@@ -1,7 +1,7 @@
 <template>
   <main>
     <artist-thumbnail
-      v-for="artist in artistData"
+      v-for="artist in artists"
       :key="artist.name"
       :name="artist.name"
       :image="artist.image"
@@ -11,17 +11,16 @@
 </template>
 
 <script>
-import ArtistThumbnail from "../components/ArtistThumbnail";
-import { mockArtists } from "../components/artist";
-// @ is an alias to /src
+import ArtistThumbnail from "@/components/ArtistThumbnail";
+import { useArtists } from "@/repository/artist";
 
 export default {
   name: "artists",
   components: { ArtistThumbnail },
-  data: function () {
-    return {
-      artistData: mockArtists,
-    };
+  setup() {
+    const { artists } = useArtists();
+    console.log(artists);
+    return { artists };
   },
 };
 </script>
@@ -31,7 +30,8 @@ main {
   display: grid;
   gap: 3rem;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(auto-fill);
+  padding: 0 2rem;
+  align-content: flex-start;
 }
 
 @media screen and (max-width: 992px) {
