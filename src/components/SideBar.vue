@@ -4,7 +4,7 @@
       <div v-if="open" class="shadow" @click="emitClose"></div>
     </transition>
     <transition name="slide">
-      <div v-if="open" class="menu">
+      <nav v-if="open" class="menu">
         <router-link
           class="animated-link menu-entry"
           v-for="artist in artists"
@@ -13,7 +13,7 @@
           @click="emitClose"
           >{{ artist.name }}</router-link
         >
-      </div>
+      </nav>
     </transition>
   </div>
 </template>
@@ -60,11 +60,22 @@ export default {
   z-index: 1;
   background: white;
   height: 100vh;
-  width: 10rem;
+  width: 20rem;
   display: flex;
   left: 0;
   flex-direction: column;
 }
+@media screen and (max-width: 992px) {
+  .menu {
+    width: 33%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .menu {
+    width: 50%;
+  }
+}
+
 
 .menu-entry {
   width: fit-content;
