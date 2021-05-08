@@ -99,5 +99,4 @@ export default {
   object-fit: cover;
   object-position: 50% 65%;
 }
-
 </style>
