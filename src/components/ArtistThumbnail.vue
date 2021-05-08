@@ -6,7 +6,7 @@
       >
     </div>
     <router-link class="thumbnail-container" :to="link"
-      ><img class="thumbnail-image" :src="require('@/assets/' + image)"
+      ><img class="thumbnail-image" :src="require('@/assets/artists/' + image)"
     /></router-link>
   </article>
 </template>
@@ -69,8 +69,9 @@ article {
 }
 
 .thumbnail-image {
-  width: 300px;
+  width: var(--artist-thumbnail-width);
 }
+
 .thumbnail-container {
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content theme">
     <navigation-bar />
 
     <router-view class="router-view" v-slot="{ Component }">
@@ -21,6 +21,12 @@ export default {
 </script>
 
 <style>
+.theme {
+  --header-img-height: 240px;
+  --artist-thumbnail-width: 300px;
+  --link-hover-color: pink;
+  --link-underline-color: pink;
+}
 @font-face {
   font-family: "Ignazio";
   src: url(./assets/fonts/IgnazioText-Regular.woff);
@@ -46,6 +52,10 @@ export default {
   height: 100%;
 }
 
+.hand-cursor {
+  cursor: pointer;
+}
+
 .animated-link {
   position: relative;
   display: block;
@@ -62,13 +72,13 @@ export default {
   height: 3px;
   top: 100%;
   left: 0;
-  background: black;
+  background: var(--link-underline-color);
   transition: transform 0.5s;
   transform: scaleX(0);
   transform-origin: right;
 }
 .animated-link:hover {
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--link-hover-color);
 }
 .animated-link:hover::after {
   transform: scaleX(1);

@@ -6,7 +6,7 @@
     </section>
     <section>
       <h3>Follow us</h3>
-      <a class="animated-link">Instagram</a>
+      <a class="animated-link hand-cursor">Instagram</a>
     </section>
   </footer>
 </template>

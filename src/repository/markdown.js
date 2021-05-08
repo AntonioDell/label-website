@@ -1,14 +1,14 @@
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
-const loadMarkdownFileContent = async (fileName) => {
+const loadMarkdownFileContent = async (filePath) => {
   try {
-    const { default: fileContent } = await require("@/assets/md/" + fileName);
+    const { default: fileContent } = await require("@/assets/" + filePath);
     return fileContent;
   } catch (error) {
     return (
       "⚠️ Failed to load markdown file **" +
-      fileName +
-      "**. Please check the file name in /assets/md/."
+      filePath +
+      "**. Please check the file name in the /assets directory."
     );
   }
 };
@@ -16,10 +16,14 @@ const loadMarkdownFileContent = async (fileName) => {
 export function useMarkdown(fileName) {
   const markdown = ref();
   const getMarkdown = async () => {
-    markdown.value = await loadMarkdownFileContent(fileName);
+    console.log("load " + fileName.value);
+    markdown.value = fileName.value
+      ? await loadMarkdownFileContent(fileName.value)
+      : "";
   };
 
   onMounted(getMarkdown);
+  watch(fileName, getMarkdown);
 
   return { markdown };
 }

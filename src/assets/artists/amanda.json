@@ -1,0 +1,22 @@
+{
+  "name": "Amanda",
+  "image": "amanda.jpg",
+  "headerImage": "amanda-header.jpg",
+  "link": "amanda",
+  "performanceType": "Singer / Songwriter",
+  "travelInfo": "2 people (singer, manager)",
+  "descriptionFile": "artists/amanda.md",
+  "agentMailAddress": "your-email@domain.de",
+  "socialMedia": [
+    { "network": "Facebook", "link": "https://facebook.de" },
+    { "network": "Reddit", "link": "https://reddit.de" },
+    { "network": "Twitter", "link": "https://twitter.de" }
+  ],
+  "soundcloudEmbed": {
+    "iframeLink": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1029132142&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    "songLink": "https://soundcloud.com/irakli-popkhadze/talking-to-the-moon-sickmix-tiktok-remix",
+    "songName": "Talking To The Moon Sickmix (TikTok Remix)",
+    "creatorLink": "https://soundcloud.com/irakli-popkhadze",
+    "creator": "irakli popkhadze"
+  }
+}

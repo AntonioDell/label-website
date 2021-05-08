@@ -1,0 +1,22 @@
+{
+  "name": "Abraxas",
+  "image": "abraxas.jpg",
+  "headerImage": "abraxas-header.jpg",
+  "link": "abraxas",
+  "performanceType": "One man show",
+  "travelInfo": "One man and a dog",
+  "description": "Heavy Metal meets Michael Jackson meets Brad Pitt.\nThe ultimate ninja fighter for your right to listen to pop-metal.",
+  "agentMailAddress": "your-email@domain.de",
+  "socialMedia": [
+    { "network": "Facebook", "link": "https://facebook.de" },
+    { "network": "Reddit", "link": "https://reddit.de" },
+    { "network": "Twitter", "link": "https://twitter.de" }
+  ],
+  "soundcloudEmbed": {
+    "iframeLink": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1029132142&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    "songLink": "https://soundcloud.com/irakli-popkhadze/talking-to-the-moon-sickmix-tiktok-remix",
+    "songName": "Talking To The Moon Sickmix (TikTok Remix)",
+    "creatorLink": "https://soundcloud.com/irakli-popkhadze",
+    "creator": "irakli popkhadze"
+  }
+}

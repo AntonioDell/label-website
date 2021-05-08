@@ -6,13 +6,17 @@ export class Artist {
   /**@type {string} */
   image;
   /**@type {string} */
-  detailsImage;
+  headerImage;
   /**@type {string} */
   link;
   /**@type {string} */
   performanceType;
   /**@type {string} */
   travelInfo;
+  /**@type {string} */
+  description;
+  /**@type {string} */
+  descriptionFile;
   /**@type {string} */
   agentMailAddress;
   /**@type {SocialMedia[]} */
@@ -35,11 +39,19 @@ export class SoundcloudEmbed {
   creatorLink;
   creator;
 }
+import artistFiles from "@/assets/artists/artistFiles";
+
+const loadArtists = async () => {
+  const artists = await Promise.all(
+    artistFiles.map(async (file) => require("@/assets/artists/" + file))
+  );
+  return artists;
+};
 
 export function useArtists() {
   const artists = ref([]);
   const getArtists = async () => {
-    artists.value = mockArtists;
+    artists.value = await loadArtists();
   };
 
   onMounted(getArtists);

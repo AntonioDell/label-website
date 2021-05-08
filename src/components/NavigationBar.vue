@@ -1,7 +1,7 @@
 <template>
   <nav :class="['nav-bar ' + (bgImage ? 'nav-bar-big' : 'nav-bar-small')]">
     <transition name="fade" mode="out-in">
-      <img v-if="bgImage" class="details-image" :src="bgImage" />
+      <img v-if="bgImage" class="header-image" :src="bgImage" />
     </transition>
     <router-link class="height-change" to="/"
       ><img class="website-logo" src="@/assets/logo.png"
@@ -39,8 +39,8 @@ export default {
       const artistLink = this.$route.params.artistId;
       const artist = this.artists.find((mock) => mock.link === artistLink);
 
-      return artist?.detailsImage
-        ? require("@/assets/" + artist.detailsImage)
+      return artist?.headerImage
+        ? require("@/assets/artists/" + artist.headerImage)
         : undefined;
     },
   },
@@ -81,7 +81,7 @@ export default {
 }
 
 .nav-bar-big > .height-change {
-  height: 15rem;
+  height: var(--header-img-height);
   transition: height 0.3s ease;
 }
 
@@ -89,18 +89,15 @@ export default {
   height: 5rem;
 }
 
-.details-image {
+.header-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 15rem;
+  height: var(--header-img-height);
   z-index: -10;
   object-fit: cover;
   object-position: 50% 65%;
 }
 
-.hand-cursor {
-  cursor: pointer;
-}
 </style>

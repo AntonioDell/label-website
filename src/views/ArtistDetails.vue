@@ -1,23 +1,16 @@
 <template>
   <main>
     <section>
-      <h1>{{ artist.name }}</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laborum
-        quia adipisci? Totam doloremque quos autem provident quisquam pariatur
-        laboriosam ad necessitatibus ipsum, maiores tenetur? Blanditiis sequi
-        vel tempore minima! Lorem ipsum, dolor sit amet consectetur adipisicing
-        elit. Iste aliquid maxime iusto in debitis rerum non, suscipit
-        voluptatem, eos pariatur voluptate quod ut delectus nulla perferendis
-        omnis veniam ex quae. Lorem ipsum dolor sit, amet consectetur
-        adipisicing elit. Laborum, distinctio in. Corporis corrupti ipsam iusto
-        fugit ducimus tenetur voluptate aliquid, mollitia soluta quidem tempora
-        provident sed dolor incidunt culpa molestias. Lorem ipsum dolor sit,
-        amet consectetur adipisicing elit. Molestias ducimus a ipsa quibusdam,
-        placeat harum cumque laudantium eligendi unde labore libero
-        necessitatibus? Aspernatur, id culpa? Modi, architecto. Voluptates,
-        quidem maxime.
-      </p>
+      <vue3-markdown-it
+        v-if="descriptionMarkdown"
+        :source="descriptionMarkdown"
+      />
+      <template v-else>
+        <h1>{{ artist.name }}</h1>
+        <p>
+          {{ artist.description }}
+        </p>
+      </template>
     </section>
     <aside>
       <section>
@@ -48,16 +41,19 @@
 import SoundcloudWidget from "@/components/SoundcloudWidget";
 import { toRefs, computed } from "vue";
 import { Artist, useArtists } from "@/repository/artist";
+import Vue3MarkdownIt from "vue3-markdown-it";
+import { useMarkdown } from "@/repository/markdown";
 
 export default {
   name: "artist-details",
-  components: { SoundcloudWidget },
+  components: { SoundcloudWidget, Vue3MarkdownIt },
   props: {
     artistId: String,
   },
   setup(props) {
     const { artistId } = toRefs(props);
     const { artists } = useArtists();
+
     const artist = computed(() => {
       return (
         artists?.value?.find((artist) => artist.link == artistId.value) ||
@@ -65,8 +61,13 @@ export default {
       );
     });
 
+    const descriptionFile = computed(() => artist.value.descriptionFile);
+
+    const descriptionMarkdown = useMarkdown(descriptionFile).markdown;
+
     return {
       artist,
+      descriptionMarkdown,
     };
   },
 };
