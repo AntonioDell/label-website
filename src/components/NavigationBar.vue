@@ -7,22 +7,28 @@
       ><img class="website-logo" src="@/assets/logo.png"
     /></router-link>
     <div class="height-change">
-      <router-link
-        :class="[bgImage ? 'animated-link inverse-color' : 'animated-link']"
-        to="/"
-        >Artists</router-link
+      <a
+        :class="[
+          'hand-cursor',
+          bgImage ? 'animated-link inverse-color' : 'animated-link',
+        ]"
+        @click="toggleSideBar"
+        >Artists</a
       >
     </div>
   </nav>
+  <side-bar :open="isSideBarOpen" @side-bar-close="closeSideBar" />
 </template>
 
 <script>
 import { useArtists } from "@/repository/artist";
+import SideBar from "@/components/SideBar.vue";
 
 export default {
   name: "navigation-bar",
+  components: { SideBar },
   data() {
-    return {};
+    return { isSideBarOpen: false };
   },
   setup() {
     const { artists } = useArtists();
@@ -36,6 +42,14 @@ export default {
       return artist?.detailsImage
         ? require("@/assets/" + artist.detailsImage)
         : undefined;
+    },
+  },
+  methods: {
+    toggleSideBar() {
+      this.isSideBarOpen = !this.isSideBarOpen;
+    },
+    closeSideBar() {
+      this.isSideBarOpen = false;
     },
   },
 };
@@ -84,5 +98,9 @@ export default {
   z-index: -10;
   object-fit: cover;
   object-position: 50% 65%;
+}
+
+.hand-cursor {
+  cursor: pointer;
 }
 </style>

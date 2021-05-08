@@ -47,10 +47,6 @@ export function useArtists() {
   return { artists };
 }
 
-export const fetchArtists = async () => {
-  return mockArtists;
-};
-
 const mockSocialMedia = [
   { network: "Facebook", link: "https://facebook.de" },
   { network: "Reddit", link: "https://reddit.de" },

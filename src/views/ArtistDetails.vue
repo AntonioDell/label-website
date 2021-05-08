@@ -42,9 +42,7 @@
 
       <section>
         <h2>Listen</h2>
-        <soundcloud-widget
-          :soundcloudEmbed="artist.soundcloudEmbed"
-        />
+        <soundcloud-widget :soundcloudEmbed="artist.soundcloudEmbed" />
       </section>
     </aside>
   </main>
