@@ -1,9 +1,9 @@
 <template>
   <article>
     <div class="hover-reveal">
-        <router-link class="animated-link artist-info" :to="link">
-          <h1>{{ name }}</h1></router-link
-        >
+      <router-link class="animated-link artist-info" :to="link">
+        <h1>{{ name }}</h1></router-link
+      >
     </div>
     <router-link class="thumbnail-container" :to="link"
       ><img class="thumbnail-image" :src="require('@/assets/' + image)"
@@ -30,12 +30,12 @@ article {
 .artist-info {
   position: absolute;
   bottom: 3rem;
-  color: white
+  color: white;
 }
 
 .artist-info {
   appearance: none;
-  color: white
+  color: white;
 }
 
 .artist-info h1 {

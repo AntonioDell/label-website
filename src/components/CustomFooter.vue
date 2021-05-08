@@ -2,13 +2,11 @@
   <footer>
     <section>
       <h3>My Label</h3>
-      <p>Contact</p>
-      <p>Impressum</p>
+      <router-link class="animated-link" to="/impressum">Impressum</router-link>
     </section>
     <section>
       <h3>Follow us</h3>
-      <p>Facebook</p>
-      <p>Instagram</p>
+      <a class="animated-link">Instagram</a>
     </section>
   </footer>
 </template>

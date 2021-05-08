@@ -49,6 +49,7 @@ export default {
 .animated-link {
   position: relative;
   display: block;
+  width: fit-content;
   text-decoration: none;
   color: black;
   padding: 4px 0;

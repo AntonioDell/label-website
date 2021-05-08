@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Artists from "../views/Artists.vue";
+import Artists from "@/views/Artists.vue";
+import Impressum from "@/views/Impressum.vue";
 
 const routes = [
   {
     path: "/",
     name: "Artists",
     component: Artists,
+  },
+  {
+    path: "/impressum",
+    name: "Impressum",
+    component: Impressum,
   },
   {
     path: "/:artistId",
