@@ -36,7 +36,6 @@ article {
   margin: 0;
 }
 
-
 .hover-reveal {
   position: absolute;
   background: rgba(0, 0, 0, 0.75);

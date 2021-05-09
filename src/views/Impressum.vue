@@ -26,12 +26,10 @@ export default {
 </script>
 
 <style>
-
 .impressum {
   padding: 0 2rem;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
 }
-
 </style>
