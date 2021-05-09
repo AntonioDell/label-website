@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="impressum animated-link-container">
     <h1>Impressum</h1>
     <vue3-markdown-it :source="legalMarkdown" />
     <vue3-markdown-it :source="cookieMarkdown" />
@@ -25,8 +25,13 @@ export default {
 };
 </script>
 
-<style scoped>
-main {
+<style>
+
+.impressum {
   padding: 0 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
 }
+
 </style>

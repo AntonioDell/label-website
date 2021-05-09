@@ -1,7 +1,7 @@
 <template>
   <article>
     <div class="hover-reveal">
-      <router-link class="animated-link artist-info" :to="link">
+      <router-link class="animated-link alternate-link artist-info" :to="link">
         <h1>{{ name }}</h1></router-link
       >
     </div>
@@ -30,28 +30,14 @@ article {
 .artist-info {
   position: absolute;
   bottom: 3rem;
-  color: white;
-}
-
-.artist-info {
-  appearance: none;
-  color: white;
 }
 
 .artist-info h1 {
   margin: 0;
 }
 
-.artist-info::after {
-  background: white;
-}
-
-.hover-reveal * {
-  color: white;
-}
 
 .hover-reveal {
-  color: white;
   position: absolute;
   background: rgba(0, 0, 0, 0.75);
   top: 0;
@@ -59,7 +45,6 @@ article {
   right: 0;
   bottom: 0;
   padding: 2rem;
-
   opacity: 0;
   transition: opacity 250ms;
 }

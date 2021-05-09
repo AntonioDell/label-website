@@ -1,5 +1,6 @@
 ## Legal notice (§ 5 TMG)
 
+**Responsible person:**\
 Marie\
 Strasse Hausnummer\
 PLZ Ort

@@ -24,9 +24,14 @@ export default {
   --header-img-height: 240px;
   --logo-img-height: 80px;
   --artist-thumbnail-width: 300px;
-  --link-hover-color: pink;
-  --link-underline-color: pink;
+  --link-color: rgb(255, 113, 137);
+  --link-hover-color: rgba(255, 192, 203, 1);
+  --link-underline-color: rgba(255, 192, 203, 1);
+  --alternate-link-color: var(--link-color);
+  --alternate-link-hover-color: var(--link-hover-color);
+  --alternate-link-underline-color: var(--link-underline-color);
 }
+
 @font-face {
   font-family: "Ignazio";
   src: url(./assets/fonts/IgnazioText-Regular.woff);
@@ -56,16 +61,16 @@ export default {
   cursor: pointer;
 }
 
-.animated-link {
+.animated-link,
+.animated-link-container a {
   position: relative;
-  display: block;
   width: fit-content;
   text-decoration: none;
-  color: black;
-  padding: 4px 0;
+  color: var(--link-color);
   transition: 0.5s;
 }
-.animated-link::after {
+.animated-link::after,
+.animated-link-container a::after {
   position: absolute;
   content: "";
   width: 100%;
@@ -77,12 +82,29 @@ export default {
   transform: scaleX(0);
   transform-origin: right;
 }
-.animated-link:hover {
+.animated-link:hover,
+.animated-link-container a:hover {
   color: var(--link-hover-color);
 }
-.animated-link:hover::after {
+.animated-link:hover::after,
+.animated-link-container a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.animated-link.alternate-link,
+.animated-link-container.alternate-link-container a {
+  color: var(--alternate-link-color);
+}
+
+.animated-link.alternate-link::after,
+.animated-link-container.alternate-link-container a::after {
+  background: var(--alternate-link-underline-color);
+}
+
+.animated-link.alternate-link:hover,
+.animated-link-container.alternate-link-container a:hover {
+  color: var(--alternate-link-hover-color);
 }
 
 .fade-enter-active,
