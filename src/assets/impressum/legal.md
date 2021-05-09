@@ -1,3 +1,8 @@
-# Legal notice
+## Legal notice (§ 5 TMG)
 
-Content administrator is [Antonio Dell'Annunziata](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
+Marie\
+Strasse Hausnummer\
+PLZ Ort
+
+Phone: Maries Telephonnummer\
+E-Mail: maries.adresse@domain.de

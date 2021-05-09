@@ -76,7 +76,7 @@ export default {
 }
 
 .nav-bar-small > .height-change {
-  height: 5rem;
+  height: var(--logo-img-height);
   transition: height 0.3s ease;
 }
 
@@ -86,7 +86,7 @@ export default {
 }
 
 .website-logo {
-  height: 5rem;
+  height: var(--logo-img-height);
 }
 
 .header-image {

@@ -19,10 +19,10 @@ export default {
   components: { NavigationBar, CustomFooter },
 };
 </script>
-
 <style>
 .theme {
   --header-img-height: 240px;
+  --logo-img-height: 80px;
   --artist-thumbnail-width: 300px;
   --link-hover-color: pink;
   --link-underline-color: pink;

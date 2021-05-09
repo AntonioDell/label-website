@@ -1,6 +1,9 @@
 <template>
   <main>
+    <h1>Impressum</h1>
     <vue3-markdown-it :source="legalMarkdown" />
+    <vue3-markdown-it :source="cookieMarkdown" />
+    <vue3-markdown-it :source="codeMarkdown" />
     <vue3-markdown-it :source="licenseMarkdown" />
   </main>
 </template>
@@ -15,7 +18,9 @@ export default {
   setup() {
     const legalMarkdown = useMarkdown(ref("impressum/legal.md")).markdown;
     const licenseMarkdown = useMarkdown(ref("impressum/license.md")).markdown;
-    return { legalMarkdown, licenseMarkdown };
+    const cookieMarkdown = useMarkdown(ref("impressum/cookies.md")).markdown;
+    const codeMarkdown = useMarkdown(ref("impressum/code.md")).markdown;
+    return { legalMarkdown, licenseMarkdown, cookieMarkdown, codeMarkdown };
   },
 };
 </script>
