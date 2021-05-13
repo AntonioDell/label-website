@@ -21,15 +21,20 @@ export default {
 </script>
 <style>
 .theme {
+  --primary-color: #f8655c;
+  --light-color: #feedea;
   --header-img-height: 240px;
   --logo-img-height: 80px;
+  --logo-img-height-medium: 50px;
+  --logo-img-height-small: 30px;
   --artist-thumbnail-width: 300px;
-  --link-color: rgb(255, 113, 137);
-  --link-hover-color: rgba(255, 192, 203, 1);
-  --link-underline-color: rgba(255, 192, 203, 1);
+  --link-color: var(--primary-color);
+  --link-hover-color: #ffb4b0;
+  --link-underline-color: var(--link-hover-color);
   --alternate-link-color: var(--link-color);
   --alternate-link-hover-color: var(--link-hover-color);
   --alternate-link-underline-color: var(--link-underline-color);
+  --foter-bg-color: rgb(238, 238, 238);
 }
 
 @font-face {

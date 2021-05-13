@@ -3,18 +3,11 @@
     <transition name="fade" mode="out-in">
       <img v-if="bgImage" class="header-image" :src="bgImage" />
     </transition>
-    <router-link class="height-change" to="/"
-      ><img class="website-logo" src="@/assets/logo.png"
+    <router-link class="height-change center" to="/"
+      ><img class="website-logo" :src="logoSrc"
     /></router-link>
-    <div class="height-change">
-      <a
-        :class="[
-          'hand-cursor',
-          bgImage ? 'animated-link inverse-color' : 'animated-link',
-        ]"
-        @click="toggleSideBar"
-        >Artists</a
-      >
+    <div class="height-change center">
+      <menu-button @click="toggleSideBar" :lightColor="bgImage" />
     </div>
   </nav>
   <side-bar :open="isSideBarOpen" @side-bar-close="closeSideBar" />
@@ -23,10 +16,11 @@
 <script>
 import { useArtists } from "@/repository/artist";
 import SideBar from "@/components/SideBar.vue";
+import MenuButton from "@/components/MenuButton";
 
 export default {
   name: "navigation-bar",
-  components: { SideBar },
+  components: { SideBar, MenuButton },
   data() {
     return { isSideBarOpen: false };
   },
@@ -43,6 +37,11 @@ export default {
         ? require("@/assets/artists/" + artist.headerImage)
         : undefined;
     },
+    logoSrc() {
+      return this.bgImage
+        ? require("@/assets/logo_bright.png")
+        : require("@/assets/logo_dark.png");
+    },
   },
   methods: {
     toggleSideBar() {
@@ -56,6 +55,14 @@ export default {
 </script>
 
 <style scoped>
+.inverted {
+  filter: invert(100%);
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .inverse-color {
   color: white;
 }
@@ -72,21 +79,34 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
 }
 
 .nav-bar-small > .height-change {
   height: var(--logo-img-height);
   transition: height 0.3s ease;
+  margin-top: 2rem;
 }
 
 .nav-bar-big > .height-change {
   height: var(--header-img-height);
   transition: height 0.3s ease;
+  margin-top: 0rem;
 }
 
 .website-logo {
   height: var(--logo-img-height);
+}
+@media screen and (max-width: 992px) {
+  .website-logo {
+    height: var(--logo-img-height-medium);
+  }
+}
+@media screen and (max-width: 400px) {
+  .website-logo {
+    height: var(--logo-img-height-small);
+  }
 }
 
 .header-image {
