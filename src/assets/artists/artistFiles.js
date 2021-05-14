@@ -1,1 +1,1 @@
-export default ["abraxas.json", "amanda.json"];
+export default ["abraxas.json", "amanda.json", "ezrael.json"];
