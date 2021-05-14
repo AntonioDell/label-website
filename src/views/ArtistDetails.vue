@@ -15,9 +15,16 @@
     <aside>
       <section>
         <h2>Info</h2>
-        <p>Performance: {{ artist.performanceType }}</p>
-        <p>Travel: {{ artist.travelInfo }}</p>
-        <p>Agent: {{ artist.agentMailAddress }}</p>
+        <p v-for="info in artist.infos" :key="info.label">
+          {{ info.label }}: {{ info.info }}
+        </p>
+      </section>
+
+      <section>
+        <h2>Book now!</h2>
+        <p>
+          <a class="animated-link" :href="mailTo">your-email@domain.de</a>
+        </p>
       </section>
 
       <section>
@@ -74,9 +81,16 @@ export default {
       emit("meta-changed", new MetaInfo(artist.value.name, [descriptionMeta]));
     });
 
+    const subjectPrefix = "Book request for ";
+    const mailTo = computed(
+      () =>
+        `mailto:your-mail@domain.de?subject=${subjectPrefix}${artist.value.name}`
+    );
+
     return {
       artist,
       descriptionMarkdown,
+      mailTo,
     };
   },
 };

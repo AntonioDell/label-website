@@ -1,5 +1,6 @@
 <template>
-  <teleport to="#metaInfo">
+  <!--This will get rendered inside the sites head-tag -->
+  <teleport to="head">
     <title>{{ metaInfo.title }}</title>
     <meta
       v-for="meta in metaInfo.meta"
