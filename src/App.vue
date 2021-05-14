@@ -1,10 +1,19 @@
 <template>
+  <teleport to="#metaInfo">
+    <title>{{ metaInfo.title }}</title>
+    <meta
+      v-for="meta in metaInfo.meta"
+      :key="meta.name"
+      :name="meta.name"
+      :content="meta.content"
+    />
+  </teleport>
   <div class="content theme">
     <navigation-bar />
 
     <router-view class="router-view" v-slot="{ Component }">
       <transition name="fade" mode="out-in">
-        <component :is="Component" />
+        <component :is="Component" @metaChanged="metaChanged" />
       </transition>
     </router-view>
 
@@ -15,8 +24,20 @@
 <script>
 import NavigationBar from "./components/NavigationBar";
 import CustomFooter from "./components/CustomFooter";
+import { MetaInfo } from "./repository/metaInfo";
 export default {
   components: { NavigationBar, CustomFooter },
+  data() {
+    return {
+      metaInfo: new MetaInfo(),
+    };
+  },
+  methods: {
+    metaChanged(metaInfo) {
+      console.log(metaInfo);
+      this.metaInfo = metaInfo;
+    },
+  },
 };
 </script>
 <style>

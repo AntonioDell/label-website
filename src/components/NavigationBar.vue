@@ -1,13 +1,18 @@
 <template>
-  <nav :class="['nav-bar ' + (bgImage ? 'nav-bar-big' : 'nav-bar-small')]">
+  <nav :class="['nav-bar ' + (!!bgImage ? 'nav-bar-big' : 'nav-bar-small')]">
     <transition name="fade" mode="out-in">
-      <img v-if="bgImage" class="header-image" :src="bgImage" />
+      <img
+        v-if="!!bgImage"
+        class="header-image"
+        :src="bgImage"
+        :alt="bgImageAlt"
+      />
     </transition>
     <router-link class="height-change center" to="/"
       ><img class="website-logo" :src="logoSrc"
     /></router-link>
     <div class="height-change center">
-      <menu-button @click="toggleSideBar" :lightColor="bgImage" />
+      <menu-button @click="toggleSideBar" :lightColor="!!bgImage" />
     </div>
   </nav>
   <side-bar :open="isSideBarOpen" @side-bar-close="closeSideBar" />
@@ -36,6 +41,12 @@ export default {
       return artist?.headerImage
         ? require("@/assets/artists/" + artist.headerImage)
         : undefined;
+    },
+    bgImageAlt() {
+      const artistLink = this.$route.params.artistId;
+      const artist = this.artists.find((mock) => mock.link === artistLink);
+
+      return artist?.headerImageAlt;
     },
     logoSrc() {
       return this.bgImage

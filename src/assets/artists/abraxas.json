@@ -1,7 +1,9 @@
 {
   "name": "Abraxas",
   "image": "abraxas.jpg",
+  "imageAlt": "Abraxas, brown hair, blue eyes, in his early 30s, playing his guitar in a bar",
   "headerImage": "abraxas-header.jpg",
+  "headerImageAlt": "\"Rock im Park\"-Gig 2012, collaborating with \"The Stingers\", fire show",
   "link": "abraxas",
   "performanceType": "One man show",
   "travelInfo": "One man and a dog",

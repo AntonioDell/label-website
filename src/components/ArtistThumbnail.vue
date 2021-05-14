@@ -6,7 +6,10 @@
       >
     </div>
     <router-link class="thumbnail-container" :to="link"
-      ><img class="thumbnail-image" :src="require('@/assets/artists/' + image)"
+      ><img
+        class="thumbnail-image"
+        :src="require('@/assets/artists/' + image)"
+        :alt="imageAlt"
     /></router-link>
   </article>
 </template>
@@ -17,6 +20,7 @@ export default {
   props: {
     name: String,
     image: String,
+    imageAlt: String,
     link: String,
   },
 };

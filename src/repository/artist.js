@@ -6,7 +6,11 @@ export class Artist {
   /**@type {string} */
   image;
   /**@type {string} */
+  imageAlt;
+  /**@type {string} */
   headerImage;
+  /**@type {string} */
+  headerImageAlt;
   /**@type {string} */
   link;
   /**@type {string} */
@@ -17,6 +21,8 @@ export class Artist {
   description;
   /**@type {string} */
   descriptionFile;
+  /**@type {string} */
+  metaDescription;
   /**@type {string} */
   agentMailAddress;
   /**@type {SocialMedia[]} */

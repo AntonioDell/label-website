@@ -1,11 +1,14 @@
 {
   "name": "Amanda",
   "image": "amanda.jpg",
+  "imageAlt": "Amanda singing on a barstool in her 2015 gig in Berlin.",
   "headerImage": "amanda-header.jpg",
+  "headerImageAlt": "Blurry image of her recent Amsterdam gig with a blue colored crowd enjoying their lives.",
   "link": "amanda",
   "performanceType": "Singer / Songwriter",
   "travelInfo": "2 people (singer, manager)",
   "descriptionFile": "artists/amanda.md",
+  "metaDescription": "Amanda's soulful music includes guitar and drums.",
   "agentMailAddress": "your-email@domain.de",
   "socialMedia": [
     { "network": "Facebook", "link": "https://facebook.de" },

@@ -39,10 +39,11 @@
 
 <script>
 import SoundcloudWidget from "@/components/SoundcloudWidget";
-import { toRefs, computed } from "vue";
+import { toRefs, computed, watch } from "vue";
 import { Artist, useArtists } from "@/repository/artist";
 import Vue3MarkdownIt from "vue3-markdown-it";
 import { useMarkdown } from "@/repository/markdown";
+import { MetaInfo, MetaTag } from "@/repository/metaInfo";
 
 export default {
   name: "artist-details",
@@ -50,7 +51,7 @@ export default {
   props: {
     artistId: String,
   },
-  setup(props) {
+  setup(props, { emit }) {
     const { artistId } = toRefs(props);
     const { artists } = useArtists();
 
@@ -62,8 +63,16 @@ export default {
     });
 
     const descriptionFile = computed(() => artist.value.descriptionFile);
-
     const descriptionMarkdown = useMarkdown(descriptionFile).markdown;
+
+    watch(artist, () => {
+      // TODO: Define better SEO tags
+      const descriptionMeta = new MetaTag(
+        "description",
+        artist.value.metaDescription || artist.value.description
+      );
+      emit("meta-changed", new MetaInfo(artist.value.name, [descriptionMeta]));
+    });
 
     return {
       artist,
