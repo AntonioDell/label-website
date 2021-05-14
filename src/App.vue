@@ -1,10 +1,20 @@
 <template>
+  <!--This will get rendered inside the sites head-tag -->
+  <teleport to="head">
+    <title>{{ metaInfo.title }}</title>
+    <meta
+      v-for="meta in metaInfo.meta"
+      :key="meta.name"
+      :name="meta.name"
+      :content="meta.content"
+    />
+  </teleport>
   <div class="content theme">
     <navigation-bar />
 
     <router-view class="router-view" v-slot="{ Component }">
       <transition name="fade" mode="out-in">
-        <component :is="Component" />
+        <component :is="Component" @metaChanged="metaChanged" />
       </transition>
     </router-view>
 
@@ -15,21 +25,38 @@
 <script>
 import NavigationBar from "./components/NavigationBar";
 import CustomFooter from "./components/CustomFooter";
+import { MetaInfo } from "./repository/metaInfo";
 export default {
   components: { NavigationBar, CustomFooter },
+  data() {
+    return {
+      metaInfo: new MetaInfo(),
+    };
+  },
+  methods: {
+    metaChanged(metaInfo) {
+      console.log(metaInfo);
+      this.metaInfo = metaInfo;
+    },
+  },
 };
 </script>
 <style>
 .theme {
+  --primary-color: #f8655c;
+  --light-color: #feedea;
   --header-img-height: 240px;
   --logo-img-height: 80px;
+  --logo-img-height-medium: 50px;
+  --logo-img-height-small: 30px;
   --artist-thumbnail-width: 300px;
-  --link-color: rgb(255, 113, 137);
-  --link-hover-color: rgba(255, 192, 203, 1);
-  --link-underline-color: rgba(255, 192, 203, 1);
+  --link-color: var(--primary-color);
+  --link-hover-color: #ffb4b0;
+  --link-underline-color: var(--link-hover-color);
   --alternate-link-color: var(--link-color);
   --alternate-link-hover-color: var(--link-hover-color);
   --alternate-link-underline-color: var(--link-underline-color);
+  --foter-bg-color: rgb(238, 238, 238);
 }
 
 @font-face {

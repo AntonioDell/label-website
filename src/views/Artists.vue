@@ -5,6 +5,7 @@
       :key="artist.name"
       :name="artist.name"
       :image="artist.image"
+      :imageAlt="artist.imageAlt"
       :link="artist.link"
     />
   </main>
@@ -13,14 +14,22 @@
 <script>
 import ArtistThumbnail from "@/components/ArtistThumbnail";
 import { useArtists } from "@/repository/artist";
+import { MetaInfo, MetaTag } from "@/repository/metaInfo";
 
 export default {
   name: "artists",
   components: { ArtistThumbnail },
   setup() {
     const { artists } = useArtists();
-    console.log(artists);
     return { artists };
+  },
+  mounted() {
+    // TODO: Define better SEO tags
+    const descriptionMeta = new MetaTag(
+      "description",
+      "Artists represented by Marie"
+    );
+    this.$emit("meta-changed", new MetaInfo("mare-artists", [descriptionMeta]));
   },
 };
 </script>
@@ -31,6 +40,7 @@ main {
   gap: 3rem;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0 2rem;
+  margin: 1rem 0;
   align-content: flex-start;
 }
 

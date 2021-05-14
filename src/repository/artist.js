@@ -1,37 +1,99 @@
 import { ref, onMounted } from "vue";
 
 export class Artist {
-  /**@type {string} */
+  /**
+   * Used as page title and in combination with description as the main content.
+   * @type {string}
+   */
   name;
-  /**@type {string} */
+  /**
+   * Url to image inside /assets/artists, will get displayed as thumbnail image.
+   * @type {string}
+   */
   image;
-  /**@type {string} */
+  /**
+   * Alt description for image (accessibility + seo).
+   * @type {string}
+   */
+  imageAlt;
+  /**
+   * Url to image inside /assets/artists, will get displayed in navigation bar as background.
+   * @type {string}
+   */
   headerImage;
-  /**@type {string} */
+  /**
+   * Alt description for headerImage (accessibility + seo).
+   * @type {string}
+   */
+  headerImageAlt;
+  /**
+   * Url link to artists detail page.
+   * Usage: https://<domain>/<link>.
+   * @type {string}
+   */
   link;
-  /**@type {string} */
-  performanceType;
-  /**@type {string} */
-  travelInfo;
-  /**@type {string} */
+  /**
+   * List of additional infos for the artist.
+   * Will get displayed on the side of the details main content.
+   * @type {ArtistInfo[]}
+   */
+  infos;
+  /**
+   * (Optional) Description used in details page, when descriptionFile is not used.
+   * Will also get used as meta-description if metaDescription is not used.
+   * @type {string}
+   */
   description;
-  /**@type {string} */
+  /**
+   * (Optional) Path to a markdown file in /assets/artists, which will get rendered as the details page main content.
+   * If not used, description will be used instead.
+   * @type {string}
+   */
   descriptionFile;
-  /**@type {string} */
-  agentMailAddress;
-  /**@type {SocialMedia[]} */
+  /**
+   * (Optional) Description used as meta tag for the details page.
+   * If not used, description will be used instead.
+   * @type {string}
+   */
+  metaDescription;
+  /**
+   * List of social media links for the artist.
+   * Will get displayed on the side of the details main content, below infos.
+   * @type {SocialMedia[]}
+   *
+   */
   socialMedia = [];
   /**@type {SoundcloudEmbed} */
   soundcloudEmbed = new SoundcloudEmbed();
 }
 
+export class ArtistInfo {
+  /**
+   * Label for the info.
+   * Usage: <label>: <info>
+   * @type {string}
+   */
+  label;
+  /**@type {string} */
+  info;
+}
+
 export class SocialMedia {
-  /**@type {string} */
+  /**
+   * Name of the linked network.
+   * @type {string}
+   *
+   */
   network;
-  /**@type {string} */
+  /**
+   * Link to the social media network.
+   * Will be the destination when users click on the name.
+   * @type {string}
+   */
   link;
 }
 
+/** See documentation for information on how to use. */
 export class SoundcloudEmbed {
   iframeLink;
   songLink;

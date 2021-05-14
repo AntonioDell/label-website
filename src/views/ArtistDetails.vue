@@ -15,9 +15,16 @@
     <aside>
       <section>
         <h2>Info</h2>
-        <p>Performance: {{ artist.performanceType }}</p>
-        <p>Travel: {{ artist.travelInfo }}</p>
-        <p>Agent: {{ artist.agentMailAddress }}</p>
+        <p v-for="info in artist.infos" :key="info.label">
+          {{ info.label }}: {{ info.info }}
+        </p>
+      </section>
+
+      <section>
+        <h2>Book now!</h2>
+        <p>
+          <a class="animated-link" :href="mailTo">your-email@domain.de</a>
+        </p>
       </section>
 
       <section>
@@ -39,10 +46,11 @@
 
 <script>
 import SoundcloudWidget from "@/components/SoundcloudWidget";
-import { toRefs, computed } from "vue";
+import { toRefs, computed, watch } from "vue";
 import { Artist, useArtists } from "@/repository/artist";
 import Vue3MarkdownIt from "vue3-markdown-it";
 import { useMarkdown } from "@/repository/markdown";
+import { MetaInfo, MetaTag } from "@/repository/metaInfo";
 
 export default {
   name: "artist-details",
@@ -50,7 +58,7 @@ export default {
   props: {
     artistId: String,
   },
-  setup(props) {
+  setup(props, { emit }) {
     const { artistId } = toRefs(props);
     const { artists } = useArtists();
 
@@ -62,12 +70,27 @@ export default {
     });
 
     const descriptionFile = computed(() => artist.value.descriptionFile);
-
     const descriptionMarkdown = useMarkdown(descriptionFile).markdown;
+
+    watch(artist, () => {
+      // TODO: Define better SEO tags
+      const descriptionMeta = new MetaTag(
+        "description",
+        artist.value.metaDescription || artist.value.description
+      );
+      emit("meta-changed", new MetaInfo(artist.value.name, [descriptionMeta]));
+    });
+
+    const subjectPrefix = "Book request for ";
+    const mailTo = computed(
+      () =>
+        `mailto:your-mail@domain.de?subject=${subjectPrefix}${artist.value.name}`
+    );
 
     return {
       artist,
       descriptionMarkdown,
+      mailTo,
     };
   },
 };

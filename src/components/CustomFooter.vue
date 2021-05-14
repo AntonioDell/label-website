@@ -21,7 +21,7 @@ export default {
 footer {
   font-size: 1rem;
   height: 10rem;
-  background-color: rgb(238, 238, 238);
+  background-color: var(--foter-bg-color);
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0 2rem;
