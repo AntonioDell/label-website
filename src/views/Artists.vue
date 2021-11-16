@@ -42,6 +42,7 @@ main {
   padding: 0 2rem;
   margin: 1rem 0;
   align-content: flex-start;
+  justify-items: center;
 }
 
 @media screen and (max-width: 992px) {

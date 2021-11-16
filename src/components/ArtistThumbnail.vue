@@ -2,15 +2,12 @@
   <article>
     <div class="hover-reveal">
       <router-link class="animated-link alternate-link artist-info" :to="link">
-        <h1>{{ name }}</h1></router-link
-      >
+        <h1>{{ name }}</h1>
+      </router-link>
     </div>
-    <router-link class="thumbnail-container" :to="link"
-      ><img
-        class="thumbnail-image"
-        :src="require('@/assets/artists/' + image)"
-        :alt="imageAlt"
-    /></router-link>
+    <router-link class="thumbnail-container" :to="link">
+      <img class="thumbnail-image" :src="require('@/assets/artists/' + image)" :alt="imageAlt" />
+    </router-link>
   </article>
 </template>
 
@@ -29,6 +26,7 @@ export default {
 <style scoped>
 article {
   position: relative;
+  max-width: 300px;
 }
 
 .artist-info {
